@@ -215,7 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function loadDateData(dateStr) {
-        // dateStr = "YYYY-MM-DD", file = fanqie_male_new_ranks_YYYYMMDD.json
+        // dateStr = "YYYY-MM-DD", file = fanqie_nan_new_ranks_YYYYMMDD.json
         const fileDateStr = dateStr.replace(/-/g, '');
         const isLatest = currentDateIndex === availableDates.length - 1;
 
@@ -228,7 +228,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Show loading state
         waterfall.innerHTML = '<p style="color:var(--text-muted);padding:20px;">加载中...</p>';
 
-        const snapshotUrl = `data/fanqie_male_new_ranks_${fileDateStr}.json?${cacheBuster}`;
+        const snapshotUrl = `data/fanqie_nan_new_ranks_${fileDateStr}.json?${cacheBuster}`;
         const trendUrl = `data/trends/${dateStr}.json?${cacheBuster}`;
 
         // Load snapshot + trends in parallel
