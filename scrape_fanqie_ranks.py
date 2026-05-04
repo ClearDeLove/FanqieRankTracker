@@ -67,7 +67,7 @@ def run_scraper(limit=30, sleep_sec=5):
         init_url = "https://fanqienovel.com/rank/1_1_1139"
         print(f"[{datetime.now().strftime('%H:%M:%S')}] 正在初始化并访问基础榜单页：{init_url}")
         page.goto(init_url, wait_until="load", timeout=15000)
-        page.wait_for_selector('a[href^="/page/"]', timeout=5000)
+        page.wait_for_selector('a[href^="/page/"]', timeout=15000)
         
         # 动态解析页面左侧拥有的所有类别目录 (通过匹配对应的榜单路由规律)
         categories_js = """
@@ -96,7 +96,7 @@ def run_scraper(limit=30, sleep_sec=5):
                 # 使用 Playwright 模拟真实的人为鼠标定位与点击跳转分类
                 page.locator(f"a[href='{cat_href}']").click()
                 time.sleep(2) # 等待 SPA 页面骨架和组件请求的动画渲染完毕
-                page.wait_for_selector('a[href^="/page/"]', timeout=5000)
+                page.wait_for_selector('a[href^="/page/"]', timeout=15000)
             except Exception as e:
                 print(f"切换分类出错或加载超时 {cat_name}: {e}")
             
